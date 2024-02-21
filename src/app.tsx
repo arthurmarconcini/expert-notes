@@ -10,7 +10,17 @@ interface Note {
 }
 
 export function App() {
-  const [notes, setNotes] = useState<Note[]>([]);
+  const [notes, setNotes] = useState<Note[]>(() => {
+    const storageNotes = localStorage.getItem("notes");
+
+    if (storageNotes) {
+      console.log(storageNotes);
+
+      return JSON.parse(storageNotes);
+    }
+
+    return [];
+  });
 
   function onNoteCreated(content: string) {
     const newNote = {
@@ -19,7 +29,11 @@ export function App() {
       content,
     };
 
-    setNotes([newNote, ...notes]);
+    const notesUpdated = [newNote, ...notes];
+
+    setNotes(notesUpdated);
+
+    localStorage.setItem("notes", JSON.stringify(notesUpdated));
   }
 
   return (
