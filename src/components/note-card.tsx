@@ -7,6 +7,7 @@ interface NoteCardProps {
   note: {
     date: Date;
     content: string;
+    id: string;
   };
 }
 

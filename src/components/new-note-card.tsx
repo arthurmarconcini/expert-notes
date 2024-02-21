@@ -3,7 +3,11 @@ import { X } from "lucide-react";
 import { FormEvent, useState } from "react";
 import { toast } from "sonner";
 
-const NewNoteCard = () => {
+interface NewNoteCardProps {
+  onNoteCreated: (content: string) => void;
+}
+
+const NewNoteCard = ({ onNoteCreated }: NewNoteCardProps) => {
   const [isNoteOpen, setIsNoteOpen] = useState<Boolean>(false);
   const [noteContent, setNoteContent] = useState("");
 
@@ -14,7 +18,15 @@ const NewNoteCard = () => {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    toast("Enviado com sucesso!");
+    if (!noteContent) return;
+
+    onNoteCreated(noteContent);
+
+    setNoteContent("");
+
+    toast.success("Enviado com sucesso!");
+
+    setIsNoteOpen(false);
   }
 
   return (
