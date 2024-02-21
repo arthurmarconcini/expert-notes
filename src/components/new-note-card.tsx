@@ -1,6 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { FormEvent, useState } from "react";
+import { toast } from "sonner";
 
 const NewNoteCard = () => {
   const [isNoteOpen, setIsNoteOpen] = useState<Boolean>(false);
@@ -13,7 +14,7 @@ const NewNoteCard = () => {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    console.log(noteContent);
+    toast("Enviado com sucesso!");
   }
 
   return (
