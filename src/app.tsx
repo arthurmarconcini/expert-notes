@@ -42,7 +42,7 @@ export function App() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto my-14 space-y-6">
+    <div className="max-w-6xl mx-auto my-14 space-y-6 px-4 xl:px-0">
       <img src={Logo} className="w-[124px]" />
       <input
         onChange={(e) => setSearch(e.target.value)}
@@ -52,7 +52,7 @@ export function App() {
         value={search}
       />
       <div className="h-px bg-slate-700" />
-      <div className="grid grid-cols-3 gap-4 auto-rows-[250px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[250px]">
         <NewNoteCard onNoteCreated={onNoteCreated} />
 
         {filteredNotes.map((note) => (

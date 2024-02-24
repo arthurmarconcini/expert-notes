@@ -93,7 +93,7 @@ const NewNoteCard = ({ onNoteCreated }: NewNoteCardProps) => {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="inset-0 bg-black/50 fixed" />
-        <Dialog.Content className="overflow-hidden fixed flex flex-col justify-between left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-full max-w-[640px] z-10 rounded-md bg-slate-700 min-h-[60vh]">
+        <Dialog.Content className="overflow-hidden fixed flex flex-col inset-0 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-y-1/2 w-full md:-translate-x-1/2 md:max-w-[640px] md:min-h-[60vh] z-10 md:rounded-md bg-slate-700">
           <form className="flex flex-col flex-1 text-sm">
             <div className="flex flex-1 flex-col p-5 gap-2">
               <span className="font-medium leading-6 text-slate-200">
