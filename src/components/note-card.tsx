@@ -9,9 +9,10 @@ interface NoteCardProps {
     content: string;
     id: string;
   };
+  onNoteDeleted: (id: string) => void;
 }
 
-const NoteCard = ({ note }: NoteCardProps) => {
+const NoteCard = ({ note, onNoteDeleted }: NoteCardProps) => {
   return (
     <Dialog.Root>
       <Dialog.Trigger className="text-sm bg-slate-800 flex flex-col gap-2 relative rounded-md overflow-hidden p-5 hover:ring-1 ring-slate-600 text-left outline-none focus-within:ring-1 focus-within:ring-lime-400">
@@ -37,7 +38,10 @@ const NoteCard = ({ note }: NoteCardProps) => {
             </span>
             <p className="text-slate-300">{note.content}</p>
           </div>
-          <button className="bg-slate-800 text-sm py-5 text-slate-300 group">
+          <button
+            onClick={() => onNoteDeleted(note.id)}
+            className="bg-slate-800 text-sm py-5 text-slate-300 group"
+          >
             deseja{" "}
             <span className="text-red-400 group-hover:underline">
               apagar essa nota

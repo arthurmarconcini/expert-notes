@@ -41,6 +41,14 @@ export function App() {
     localStorage.setItem("notes", JSON.stringify(notesUpdated));
   }
 
+  function onNoteDeleted(id: string) {
+    const newNotes = notes.filter((note) => note.id !== id);
+
+    setNotes(newNotes);
+
+    localStorage.setItem("notes", JSON.stringify(newNotes));
+  }
+
   return (
     <div className="max-w-6xl mx-auto my-14 space-y-6 px-4 xl:px-0">
       <img src={Logo} className="w-[124px]" />
@@ -56,7 +64,7 @@ export function App() {
         <NewNoteCard onNoteCreated={onNoteCreated} />
 
         {filteredNotes.map((note) => (
-          <NoteCard key={note.id} note={note} />
+          <NoteCard key={note.id} note={note} onNoteDeleted={onNoteDeleted} />
         ))}
       </div>
     </div>
